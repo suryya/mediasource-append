@@ -1,7 +1,8 @@
+/*
 const vidElement = document.querySelector("video");
 
 const mime = 'video/mp4; codecs="avc1.64001f,mp4a.40.02"';
-/*
+
 var mediaSource = new MediaSource();
 // vidElement.src = URL.createObjectURL(mediaSource);
 // mediaSource.addEventListener("sourceopen", sourceOpen);
@@ -21,14 +22,9 @@ function sourceOpen(e) {
         sourceBuffer.appendBuffer(arrayBuffer);
     });
 
-}*/
 
+}
 
-// const mimeCodec = 'video/mp4; codecs="avc1.64001f,mp4a.40.02"';
-// const mimeCodecOld = 'video/mp4; codecs="avc1.64001f,mp4a.40.02"';
-
-(async () => {
-	const videoElement = document.querySelector('video');
 	const vidClips = [
 		'https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/Schlossbergbahn.webm/Schlossbergbahn.webm.160p.webm',
 		'https://mdn.github.io/learning-area/html/multimedia-and-embedding/video-and-audio-content/rabbit320.webm',
@@ -40,7 +36,15 @@ function sourceOpen(e) {
 	// 	'http://localhost:3000/multi-file/manual/Schlossbergbahn.webm.160p.webm',
 	// 	'http://localhost:3000/multi-file/manual/STB_Stuttgart_F%C3%B6hrich_U6_Line_Entering_Station_VIDEO.webm.160p.webm'
 	// ];
-	
+
+*/
+
+
+// const mimeCodec = 'video/mp4; codecs="avc1.64001f,mp4a.40.02"';
+// const mimeCodecOld = 'video/mp4; codecs="avc1.64001f,mp4a.40.02"';
+
+(async () => {
+	const videoElement = document.querySelector('video');	
 
 	const teaserClips = [
         'http://localhost:3000/chunked/init.mp4',
@@ -78,26 +82,6 @@ function sourceOpen(e) {
         'http://localhost:3000/chunked/movie_ad_31.m4s',
 	];
 
-    const teaserChunkDuration = [
-        2.0,
-        0.068733,
-		1.968633,
-		1.968633,
-		2.002,
-		2.068733,
-		1.935267,
-		2.002,
-		2.068733,
-		1.935267,
-		2.002,
-		2.068733,
-		1.935267,
-		2.068733,
-		2.002,
-		1.935267,
-		2.002,
-		2.068733,
-	];
 
 	const mainUnitClips = [
         'http://localhost:3000/chunks2/init.mp4',
@@ -118,67 +102,6 @@ function sourceOpen(e) {
 		'http://localhost:3000/chunks2/video2_14.m4s'
 	];
 
-    // const tmainUnitClipsDuration = [
-    //     2.0,
-    //     0.068733,
-	// 	1.968633,
-	// 	1.968633,
-	// 	2.002,
-	// 	2.068733,
-	// 	1.935267,
-	// 	2.002,
-	// 	2.068733,
-	// 	1.935267,
-	// 	2.002,
-	// 	2.068733,
-	// 	1.935267,
-	// 	2.068733,
-	// 	2.002,
-	// 	1.935267,
-	// 	2.002,
-	// 	2.068733,
-	// ];
-
-	// const mainUnitClips = [
-	// 	'http://localhost:3000/chunked/movie_ad_16.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_17.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_18.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_19.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_20.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_21.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_22.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_23.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_24.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_25.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_26.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_27.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_28.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_29.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_30.m4s',
-	// 	'http://localhost:3000/chunked/movie_ad_31.m4s',
-	// ];
-
-
-
-	// Shuffle clips. If you reload the page, you will get a random order of videos!
-	// shuffleArr(vidClips);
-	// shuffleArr(teaserClips);
-	// shuffleArr(mainUnitClips);
-
-	// const fetchOriginalClips =  async () => {
-	// 	return await Promise.all(
-	// 		vidClips.map(async (vidUrl,i) => {
-	// 			const blob = await (await fetch(vidUrl));//.blob();
-	// 			const duration = await getDuration(blob);
-	// 			const buff = await blob.arrayBuffer();
-	// 			return {
-	// 				url: vidUrl,
-	// 				duration,
-	// 				buff
-	// 			};
-	// 		})
-	// 	);
-	// };
 
 	const fetchTeaserClips =  async () => {
 		return await Promise.all(
@@ -210,6 +133,7 @@ function sourceOpen(e) {
 			})
 		);
 	};
+
 	let teaserClipIndex = 0;
 	const loadTeaserVideosIntoMSE = async () => {
 		
@@ -273,22 +197,6 @@ function sourceOpen(e) {
 	// timeline info. So, we need to compute the duration of each, and then use
 	// that later to manually offset each chunk from the previous
 
-	/**
-	 * @typedef {{url: string, duration: number, buff: ArrayBuffer}} ClipToAppend
-	 */
-	/** @type {ClipToAppend[]} */
-	/*const clipsToAppend = await Promise.all(
-		vidClips.map(async (vidUrl) => {
-			const blob = await (await fetch(vidUrl)).blob();
-			const duration = await getDuration(blob);
-			const buff = await blob.arrayBuffer();
-			return {
-				url: vidUrl,
-				duration,
-				buff
-			};
-		})
-	);*/
 	let teaserClipsToAppend, mainUnitClipsToAppend, clipsToAppend, mainClipsToAppend;
 	let sourceBuffer;
 	clipsToAppend = await fetchTeaserClips();
